@@ -1,4 +1,4 @@
-# YouTube API Project
+# YouTube Playlist Creator
 
 A lightweight web app for generating playlists for YouTube channels.
 
