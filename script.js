@@ -131,13 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('Video details received:', videoDetailsData);
 
                 const videosToProcess = videoDetailsData.items.filter(item => {
-                    const duration = item.contentDetails.duration;
-                    const match = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
-                    const hours = (parseInt(match[1]) || 0);
-                    const minutes = (parseInt(match[2]) || 0);
-                    const seconds = (parseInt(match[3]) || 0);
-                    const totalSeconds = hours * 3600 + minutes * 60 + seconds;
-
+                    const totalSeconds = getTotalSeconds(item.contentDetails.duration);
                     const isShort = totalSeconds <= 60; // YouTube Shorts are typically 60 seconds or less
 
                     // Apply YouTube Shorts filter
@@ -190,6 +184,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     const yearB = getYearFromTitle(b.snippet.title);
                     return yearB - yearA;
                 });
+            } else if (order === 'duration_desc') {
+                console.log('Sorting videos by duration (longest to shortest).');
+                filteredByKeywordVideos.sort((a, b) => {
+                    const durationA = getTotalSeconds(a.contentDetails.duration);
+                    const durationB = getTotalSeconds(b.contentDetails.duration);
+                    return durationB - durationA;
+                });
+            } else if (order === 'duration_asc') {
+                console.log('Sorting videos by duration (shortest to longest).');
+                filteredByKeywordVideos.sort((a, b) => {
+                    const durationA = getTotalSeconds(a.contentDetails.duration);
+                    const durationB = getTotalSeconds(b.contentDetails.duration);
+                    return durationA - durationB;
+                });
             }
 
             console.log('Total videos found:', filteredByKeywordVideos.length);
@@ -214,6 +222,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function getYearFromTitle(title) {
         const match = title.match(/\b(19|20)\d{2}\b/);
         return match ? parseInt(match[0], 10) : Infinity; // Return Infinity if no year found
+    }
+
+    function getTotalSeconds(duration) {
+        const match = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+        const hours = (parseInt(match[1]) || 0);
+        const minutes = (parseInt(match[2]) || 0);
+        const seconds = (parseInt(match[3]) || 0);
+        return hours * 3600 + minutes * 60 + seconds;
     }
 
     async function copyToClipboard(text) {
