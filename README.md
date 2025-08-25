@@ -1,6 +1,6 @@
 # YouTube API Project
 
-This is a simple web project that demonstrates interaction with the YouTube Data API v3.
+A lightweight web app for generating playlists for YouTube channels.
 
 ![Screenshot](https://i.imgur.com/blq1kt9.jpeg)
 
