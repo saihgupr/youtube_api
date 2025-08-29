@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>YouTube Channel Video IDs</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
+    <div class="app">
         <div class="header">
-            <h1>📺 YouTube Channel Tool</h1>
-            <p>Extract video IDs from any YouTube channel</p>
+            <h1><span style="font-size: 32px;">📺</span> YouTube Tool</h1>
+            <p class="subtitle">Extract video IDs from any YouTube channel</p>
         </div>
-        
-        <div class="form-container">
+
+        <div class="main">
             <div id="messageArea" class="message-area"></div>
-            
+
             <div class="input-group">
                 <label for="channelName">Channel Name:</label>
                 <input type="text" id="channelName" placeholder="Enter YouTube Channel Name">
                 <button id="searchChannelBtn">🔍 Search Channel</button>
             </div>
-            
+
             <div class="input-group">
                 <label for="channelId">Channel ID:</label>
                 <input type="text" id="channelId" placeholder="Enter the YouTube Channel ID">
             </div>
-            
+
+            <h2 class="section-title">Video Settings</h2>
+
             <div class="input-group">
                 <label for="order">Order:</label>
                 <select id="order">
@@ -39,17 +41,17 @@
                     <option value="duration_asc">Shortest to Longest</option>
                 </select>
             </div>
-            
+
             <div class="input-group">
                 <label for="keywordFilter">Keyword Filter:</label>
                 <input type="text" id="keywordFilter" placeholder="Filter by keyword in title/description">
             </div>
-            
+
             <div class="input-group">
                 <label for="minDuration">Minimum Duration (minutes):</label>
                 <input type="number" id="minDuration" placeholder="e.g., 5 for 5 minutes">
             </div>
-            
+
             <div class="toggle-group">
                 <label for="youtubeShortsToggle">YouTube Shorts</label>
                 <label class="switch">
@@ -57,19 +59,19 @@
                     <span class="slider round"></span>
                 </label>
             </div>
-            
+
             <button id="getVideosBtn">🚀 Get Video IDs</button>
-            
+
             <div class="copy-buttons">
                 <button id="copyIosUrlBtn">📱 Copy for iOS</button>
-                <button id="copyDesktopUrlBtn">🖥️ Open on Desktop</button>
+                <button id="copyDesktopUrlBtn">🌐 Copy Web Link</button>
             </div>
-            
+
             <div class="output-group">
                 <label for="videoIds">Video IDs:</label>
                 <textarea id="videoIds" readonly placeholder="Video IDs will appear here..."></textarea>
             </div>
-            
+
             <div id="loading" class="loading" style="display: none;">
                 <strong>🔄 Fetching videos...</strong><br>
                 Please wait while we retrieve the channel data

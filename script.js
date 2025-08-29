@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const CHANNEL_NAME_INPUT = document.getElementById('channelName');
     const SEARCH_CHANNEL_BTN = document.getElementById('searchChannelBtn');
 
-    SEARCH_CHANNEL_BTN.addEventListener('click', async () => {
+    // Function to search for channel
+    async function searchChannel() {
         const apiKey = YOUTUBE_API_KEY;
         const channelName = CHANNEL_NAME_INPUT.value;
 
@@ -34,6 +35,16 @@ document.addEventListener('DOMContentLoaded', () => {
             displayMessage(`Error searching for channel: ${error.message}`, 'error');
         } finally {
             LOADING_DIV.style.display = 'none';
+        }
+    }
+
+    SEARCH_CHANNEL_BTN.addEventListener('click', searchChannel);
+
+    // Add enter key listener to channel name input
+    CHANNEL_NAME_INPUT.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent form submission
+            searchChannel();
         }
     });
     const ORDER_SELECT = document.getElementById('order');

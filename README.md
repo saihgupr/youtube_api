@@ -2,7 +2,7 @@
 
 A lightweight web app for generating playlists for YouTube channels.
 
-![Screenshot](https://i.imgur.com/blq1kt9.jpeg)
+![Screenshot](https://i.imgur.com/DUixcNq.png)
 
 ## Features
 
